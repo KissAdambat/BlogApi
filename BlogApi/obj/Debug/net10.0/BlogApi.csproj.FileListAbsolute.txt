@@ -33,3 +33,5 @@ C:\Users\kissa\Desktop\suli\backend\BlogApi\BlogApi\obj\Debug\net10.0\BlogApi.pd
 C:\Users\kissa\Desktop\suli\backend\BlogApi\BlogApi\obj\Debug\net10.0\BlogApi.genruntimeconfig.cache
 C:\Users\kissa\Desktop\suli\backend\BlogApi\BlogApi\obj\Debug\net10.0\ref\BlogApi.dll
 C:\Users\kissa\Desktop\suli\backend\BlogApi\BlogApi\bin\Debug\net10.0\Scalar.AspNetCore.dll
+C:\Users\kissa\Desktop\suli\backend\BlogApi\BlogApi\bin\Debug\net10.0\MySqlConnector.dll
+C:\Users\kissa\Desktop\suli\backend\BlogApi\BlogApi\obj\Debug\net10.0\BlogApi.sourcelink.json
