@@ -58,17 +58,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Blogger"
+                "$ref": "#/components/schemas/AddBloggerDTOs"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Blogger"
+                "$ref": "#/components/schemas/AddBloggerDTOs"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Blogger"
+                "$ref": "#/components/schemas/AddBloggerDTOs"
               }
             }
           },
@@ -152,6 +152,37 @@
   },
   "components": {
     "schemas": {
+      "AddBloggerDTOs": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "age": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "password": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "Blogger": {
         "type": "object",
         "properties": {
