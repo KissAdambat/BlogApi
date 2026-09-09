@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
+using BlogApi.Models.DTOs;
 
 namespace BlogApi.Controllers
 {
@@ -36,14 +37,45 @@ namespace BlogApi.Controllers
             return bloggers;
         }
         [HttpPost]
-        public object AddNewBlogger(Blogger blogger)
+        public object AddNewBlogger(AddBloggerDTOs blogger)
         {
-            return null;
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+            var blg = new Blogger
+            {
+                Name = blogger.Name,
+                Email = blogger.Email,
+                Age = blogger.Age,
+                Password = blogger.Password,
+                RegistrationTime = DateTime.Now
+            };
+
+            var sql = $"INSERT INTO `blogger`(`Name`, `Email`, `Age`, `Password`, `RegistrationTime`) VALUES (@name,@email,@age,@password,@registrationTime)";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@name", blg.Name);
+            cmd.Parameters.AddWithValue("@email", blg.Email);
+            cmd.Parameters.AddWithValue("@age", blg.Age);
+            cmd.Parameters.AddWithValue("@password", blg.Password);
+            cmd.Parameters.AddWithValue("@registrationTime", blg.RegistrationTime);
+            cmd.ExecuteNonQuery();
+            connector.Close();
+            return blg;
         }
         [HttpPut]
         public object UpdateBlogger(int id, Blogger blogger)
         {
-            return null;
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+            var sql = $"UPDATE `blogger` SET `Name`=@name,`Email`=@email,`Age`=@age,`Password`=@password WHERE `Id`=@id";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@name", blogger.Name);
+            cmd.Parameters.AddWithValue("@email", blogger.Email);
+            cmd.Parameters.AddWithValue("@age", blogger.Age);
+            cmd.Parameters.AddWithValue("@password", blogger.Password);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            connector.Close();
+            return blogger;
         }
         [HttpDelete]
         public object DeleteBlogger(int id)
