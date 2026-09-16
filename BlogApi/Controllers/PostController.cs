@@ -36,5 +36,31 @@ namespace BlogApi.Controllers
             connector.Close();
             return posts;
         }
+
+        [HttpPost]
+        public object AddNewBlogger(AddBlogPost post)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+            var pst = new Post
+            {
+                Title = post.Title,
+                Content = post.Content,
+                postTime = DateTime.Now,
+                updateTime = DateTime.Now,
+                blogId = post.blogId
+            };
+
+            var sql = $"INSERT INTO `blogpost`(`Title`, `Content`, `postTime`, `updateTime`, `blogId`) VALUES (@title,@content,@postTime,@updateTime,@blogId)";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@title", pst.Title);
+            cmd.Parameters.AddWithValue("@content", pst.Content);
+            cmd.Parameters.AddWithValue("@postTime", pst.postTime);
+            cmd.Parameters.AddWithValue("@updateTime", pst.updateTime);
+            cmd.Parameters.AddWithValue("@blogId", pst.blogId);
+            cmd.ExecuteNonQuery();
+            connector.Close();
+            return pst;
+        }
     }
 }
