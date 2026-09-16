@@ -78,5 +78,18 @@ namespace BlogApi.Controllers
             connector.Close();
             return post;
         }
+
+        [HttpDelete]
+        public object DeletePost(int id)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+            var sql = $"DELETE FROM `blogpost` WHERE `Id`=@id";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            connector.Close();
+            return "Kitörölve";
+        }
     }
 }
