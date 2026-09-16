@@ -38,7 +38,7 @@ namespace BlogApi.Controllers
         }
 
         [HttpPost]
-        public object AddNewBlogger(AddBlogPost post)
+        public object AddNewPost(AddBlogPost post)
         {
             var connector = new MySqlConnection(ConnectionString);
             connector.Open();
@@ -61,6 +61,22 @@ namespace BlogApi.Controllers
             cmd.ExecuteNonQuery();
             connector.Close();
             return pst;
+        }
+
+        [HttpPut]
+        public object UpdatePost(int id, Post post)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+            var sql = $"UPDATE `blogpost` SET `Title`=@title,`Content`=@content,`updateTime`=@updateT WHERE `Id`=@id";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@title", post.Title);
+            cmd.Parameters.AddWithValue("@content", post.Content);
+            cmd.Parameters.AddWithValue("@updateT", post.updateTime);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            connector.Close();
+            return post;
         }
     }
 }
