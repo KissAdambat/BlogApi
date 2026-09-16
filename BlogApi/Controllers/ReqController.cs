@@ -123,7 +123,7 @@ namespace BlogApi.Controllers
                 darab++;
             }
             connector.Close();
-            return "Ennyi darab postja van a keresett bloggernek:" + darab;
+            return "Ennyi postja van a keresett bloggernek:" + darab;
         }
     }
 }
