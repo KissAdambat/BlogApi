@@ -144,5 +144,47 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.ReqController",
+    "Method": "GetABlogger",
+    "RelativePath": "api/Req",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.ReqController",
+    "Method": "GetABloggerPost",
+    "RelativePath": "api/Req/BloggerPost",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogApi.Controllers.ReqController",
+    "Method": "GetAllPost",
+    "RelativePath": "api/Req/Darab",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

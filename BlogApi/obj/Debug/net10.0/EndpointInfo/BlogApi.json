@@ -284,6 +284,65 @@
           }
         }
       }
+    },
+    "/api/Req": {
+      "get": {
+        "tags": [
+          "Req"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Req/BloggerPost": {
+      "get": {
+        "tags": [
+          "Req"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Req/Darab": {
+      "get": {
+        "tags": [
+          "Req"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -435,6 +494,9 @@
     },
     {
       "name": "Post"
+    },
+    {
+      "name": "Req"
     }
   ]
 }
